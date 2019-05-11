@@ -1,0 +1,43 @@
+<br>
+<div class="row">
+  <div class="col-md-12">
+
+        <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search Repository" [(ngModel)]="searchterm" name="repos" (keyup.enter)="search()">
+            </div>
+          </form>
+
+
+  </div>
+</div>
+<div *ngIf="repos">
+<h1>Repositories</h1>
+<ul *ngFor="let things of repos; let i=index" class="list-group">
+  <li key='i' class="list-group-item">
+
+        <div class="panel panel-default">
+          <div class="col-sm-5">
+
+              <img src="{{things.owner.avatar_url}}" class="img-responsive" style="width: 5rem; height: 5rem;">
+          </div>
+
+            <div class="panel-heading">
+              <h3 class="panel-title">{{things.name}}</h3>
+            </div>
+            <div class="panel-body">
+                <p>{{things.description}}</p>
+                <p>Language : {{things.language}}</p>
+                <p>Repository Owner/Organization : {{things.owner.login}}</p>
+                <p>Created : {{things.created_at}}</p>
+                <a href="{{things.url}}" class="btn btn-primary">{{things.url}}</a>
+            </div>
+          </div>
+
+  </li>
+  <hr>
+  <br/>
+
+</ul>
+
+</div>
